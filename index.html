@@ -43,11 +43,13 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	var tonsilitis_count = 0; // 0 initializes the variable
 
 	function strepAdd() {
-   	 	strep_count += 1;
+    strep_count += 1;
+    console.log("Strep Count: ", strep_count);
 }
 
-	function tonsilitisAdd() {
-    		tonsilitis_count += 1;
+function tonsilitisAdd() {
+    tonsilitis_count += 1;
+    console.log("Tonsilitis Count: ", tonsilitis_count);
 }
 
 
@@ -55,7 +57,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     var strepPercent = (strep_count / 4) * 100; // divide by the number of questions
     var tonsilitisPercent = (tonsilitis_count / 4) * 100;
     var resultText = document.getElementById("resultText"); // Updated ID reference
-    resultText.innerHTML = "Probability it is Strep Throat = " + stepPercent + "%<br> Probability it is Tonsilitis = " + tonsilitisPercent + "%"; //+ and "" prints out what is in variable-->
+    resultText.innerHTML = "Probability it is Strep Throat = " + strepPercent + "%<br> Probability it is Tonsilitis = " + tonsilitisPercent + "%"; // + and "" prints out what is in variable-->
 }
 	
   </script>	
