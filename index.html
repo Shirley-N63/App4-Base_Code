@@ -35,12 +35,30 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	<link rel="stylesheet" href="w3.css">
 	<link rel="stylesheet" href="w3-colors-flat.css">
 </head> 
-
+	
+<!--javascript function section -->
+	<!--this does all the counting and math when users press corresponding buttons-->
 <script>
+	var strep_count = 0; // var allergy_count declares the variable
+	var tonsilitis_count = 0; // 0 initializes the variable
 
-	//YOUR JAVASCRIPT GOES HERE
+	function strepAdd() {
+   	 	strep_count += 1;
+}
 
-</script>	
+	function tonsilitisAdd() {
+    		tonsilitis_count += 1;
+}
+
+
+	function getResult() {
+    var strepPercent = (strep_count / 4) * 100; // divide by the number of questions
+    var tonsilitisPercent = (tonsilitis_count / 4) * 100;
+    var resultText = document.getElementById("resultText"); // Updated ID reference
+    resultText.innerHTML = "Probability it is Strep Throat = " + stepPercent + "%<br> Probability it is Tonsilitis = " + tonsilitisPercent + "%"; //+ and "" prints out what is in variable-->
+}
+	
+  </script>	
 
 
 <!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. PROBABLY DONT MESS WITH IT -->
@@ -66,10 +84,93 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 }
 </style>
 
+<!-- start of app content - this is the front page when you first open the app -->
 <body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Strep Throat or Tonsilitis?</h1> <!--focus question for app-->
+</div>
+	<!--disclaimers and content intended for user discretion-->
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have Step Throat but wonder if it is Tonsilitis? Answer a few short questions to find out!</p> <!-- disclaimers on front page-->
 	
-	<!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
-	REPLACE THIS TEXT
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+	<!--End of Disclaimers-->
+	
+<!-- Start of Page 1 -->
+<div class="page" id="one">  <!--page number of the website-->
+	<div id="header" class="w3-container w3-flat-carrot"> <!-- head is the header section and title is the page's title-->
+		<h1>Question 1</h1>
+	</div> <!-- divisions in the body-->
+<div id="content" class="w3-container"> <!-- content of page 1 starts here-->
+        <p>Are you experiencing abdominal pain or nausea?</p> <!--question on the page-->
+		<a href="#two" onclick="strepAdd();" class="w3-btn w3-black"> Yes </a> <!--href = #two tells link to go to the next page-->
+		<a href="#two" onclick="tonsilitisAdd();" class="w3-btn w3-black"> No </a> <!-- onclick does what it equals when button is clicked-->
+    	</div>
+</div>
+<!--End of Page 1-->
+
+<!--Start of Page 2-->
+<div class="page" id="two">  <!--page number-->
+	<div id="header" class="w3-container w3-flat-carrot"> <!--Flat Carrot is the color-->
+		<h1>Question 2</h1>
+	</div>
+	
+    	<div id="content" class="w3-container"> <!--content of page 2 starts here-->
+        <p>Do you have unusual bad breath?</p> <!--question on page 2-->
+		<a href="#three" onclick="tonsilitisAdd();" class="w3-btn w3-black"> Yes </a> <!--coldAdd keeps track of the calculations when the yes button is clicked-->
+		<a href="#three" onclick="strepAdd();" class="w3-btn w3-black"> No </a> <!-- allergyAdd keeps track of calculations when the no button is clicked-->
+    	</div>
+</div>	
+<!--End of Page 2-->
+
+<!--Start of Page 3-->
+<div class="page" id="three">  <!--page number-->
+	<div id="header" class="w3-container w3-flat-carrot"> 
+		<h1>Question 3</h1>
+	</div>
+	
+    	<div id="content" class="w3-container"> <!--content of page 3 starts here-->
+        <p>Do you have a sore throat that appeared suddenly?</p> <!--question on page 3-->
+		<a href="#four" onclick="strepAdd();" class="w3-btn w3-black"> Yes </a> <!--yes signifies cold-->
+		<a href="#four" onclick="tonsilitisAdd();" class="w3-btn w3-black"> No </a> <!--no signifies allergy-->
+    	</div>
+</div>	
+<!--End of Page 3--> 
+
+<!--Start of Page 4-->
+<div class="page" id="four">  <!--page number-->
+	<div id="header" class="w3-container w3-flat-carrot"> 
+		<h1>Question 4</h1>
+	</div>
+	
+    	<div id="content" class="w3-container"> <!--content of page 4 starts here-->
+        <p>Is there white or yellow discoloration on/around your tonsils?</p> <!--question on page 4-->
+		<a href="#five" onclick="tonsilitisAdd();" class="w3-btn w3-black"> Yes </a> <!--yes signifies allergy-->
+		<a href="#five" onclick="strepAdd();" class="w3-btn w3-black"> No </a> <!--no signifies cold-->
+    	</div>
+</div>	
+<!--End of Page 4--> 	
+
+<!--Start of Results Page-->
+<div class="page" id="results">  <!-- refers to results page -->
+    <div id="header" class="w3-container w3-flat-carrot">
+        <h1>Results</h1>
+    </div>
+
+    <div id="content" class="w3-container">
+        <p>Click the button below to find out your results!</p> <!-- context above the button-->
+    </div>	
+
+    <div id="content" class="w3-container">
+        <button onclick="getResult();">Results</button> <!-- this button replaces the previous yes/no buttons-->
+        <p id="resultText"></p>  <!-- Renamed from "results" to "resultText" -->
+    </div>
+</div> 
+<!--End of Results Page-->
 	
 </body>
 </html>
